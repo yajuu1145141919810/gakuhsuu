@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int main (void){
-    int d,deye,i,g = 0;//変数宣言
+    srand((unsigned int)time(NULL));
+    int d,deye,i,g = 0,y;//変数宣言
     int l[100];
     printf("ダイズを振ります\n");
     printf("ダイズ数?\n");
@@ -13,6 +15,10 @@ int main (void){
     }
     printf("目の数?\n");
     scanf("%d",&deye);
+    if (deye <= 0){//ここで危険な数を弾く
+        printf("1以上でお願いします\n");
+        return 1;
+    }
     printf("%dd%dでダイズを振ります\n",d,deye);
     for ( i = 0; i < d; i++){
         l[i] = rand() % deye + 1;//乱数を配列に代入
